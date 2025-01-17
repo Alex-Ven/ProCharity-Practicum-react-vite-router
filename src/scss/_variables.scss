@@ -1,0 +1,25 @@
+/* Цвета */
+:root {
+  $primary-color: #374146;
+  $secondary-color: #7DCDD7;
+  $background-color: #FFFFFF;
+  $text-color: #A0ABB5;
+  
+
+  /* Шрифты */
+  $font-family-primary: 'PT Root UI VF', sans-serif;
+  $font-family-secondary: 'Helvetica', sans-serif;
+
+  /* Размеры */
+  $font-size-base: 16px;
+  $font-size-lg: 32px;
+  $font-size-sm: 14px;
+  $line-height: 24px;
+
+  /* Отступы */
+  $space-xs: 8px;
+  $space-sm: 16px;
+  $space-md: 24px;
+  $space-lg: 32px;
+  $space-xl: 48px;
+}
