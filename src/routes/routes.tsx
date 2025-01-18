@@ -1,3 +1,1 @@
-export const routes = [
-	{ index: true, element: <p>Hello world!</p> }
-];
+export const routes = [{ index: true, element: <p>Hello world!</p> }];

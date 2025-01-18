@@ -1,4 +1,6 @@
-@import '@styles/_variables.scss';
+@use './variables' as vars;
+@use './typography' as typography;
+
 /* Сброс и базовые стили */
 *,
 *::before,
@@ -9,10 +11,10 @@
 }
 
 body {
-  font-family: $font-family-primary;
-  line-height: $line-height;
-  background-color: $background-color;
-  color: $primary-color;
+  font-family: vars.$font-family-primary;
+  line-height: vars.$line-height;
+  background-color: vars.$background-color;
+  color: vars.$primary-color;
   margin: 0;
   padding: 0;
 }
@@ -28,13 +30,39 @@ button {
   border: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Применение классов для типографики */
+h1 {
+  @include typography.text-h1;
+}
+
+p {
+  @include typography.text-base;
+}
+
+.bold-text {
+  @include typography.text-bold;
+}
+
+.italic-text {
+  @include typography.text-italic;
+}
+
+.center-text {
+  @include typography.text-center;
+}
+
+.primary-text {
+  @include typography.text-primary;
 }
 
 /* Плавные переходы */
