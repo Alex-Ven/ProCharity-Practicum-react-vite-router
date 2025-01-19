@@ -1,0 +1,28 @@
+.section-hero-urgent {
+  //position: relative;
+  width: 100%; /* Полная ширина родительского контейнера */
+  height: 100vh; /* Занимает весь экран */
+  background-image: url('https://s3-alpha-sig.figma.com/img/53ed/3983/e1abb39d84219ca3d4d83170ce0cc663?Expires=1737936000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=nnU49jLPq8nLTd-ERE97JZ8u-iusnclgTg2wy7C2KDM~dvGp3kEIoKyOC8XBIMrpKHdnC7IdYRJs-ei7dFosNpN03VFrx7N94mFsY11EvyAZwlxRqNzbIJ5U9HiRguvwxAYVKohuIdN6SRzUja7Saa-GYx8zA6jY8rnvJEhuZpsiiK3ACgv4EX-0fkYP6CksKR7WKz61FANunAuN9UCd9j65ul3snfMffMHIYCBVuN5DUvIHimTHCp5pYoQ6RK5PN4FWmft9WxJKXzJkR4sVYCmiwGmgVlVr0aWH1RTNGC4OH4sppjimNemf5TLYy9HlTIq-qrb2Fjsn8yXdvo0MyA');
+  background-size: cover; /* Полностью покрывает контейнер */
+  background-position: center; /* Центрируем фон */
+  background-repeat: no-repeat;
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрируем по вертикали и горизонтали */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  }
+}

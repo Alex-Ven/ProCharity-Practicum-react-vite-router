@@ -1,17 +1,25 @@
-// src/components/Common/Tooltip/Tooltip.tsx
-const Tooltip = ({
-	text,
-	children,
-}: {
-	text: string;
-	children: React.ReactNode;
-}) => {
-	return (
-		<div className="tooltip">
-			{children}
-			<span className="tooltip-text">{text}</span>
-		</div>
-	);
+import React, { useState } from 'react';
+import './Tooltip.scss';
+
+type TooltipProps = {
+  text: string; // Текст всплывающей подсказки
+  children: React.ReactNode; // Элемент, к которому привязана подсказка
 };
 
-export { Tooltip };
+export const Tooltip = ({ text, children }: TooltipProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const showTooltip = () => setIsVisible(true);
+  const hideTooltip = () => setIsVisible(false);
+
+  return (
+    <div
+      className="tooltip"
+      onMouseEnter={showTooltip}
+      onMouseLeave={hideTooltip}
+    >
+      {children}
+      {isVisible && <span className="tooltip__text">{text}</span>}
+    </div>
+  );
+};

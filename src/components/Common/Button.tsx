@@ -1,10 +1,11 @@
 import React from 'react';
+import './Button.scss';
 
 // Типы кнопок
 export type ButtonType = 'primary' | 'secondary' | 'outline'; // Возможные типы кнопок
 export type ButtonVariant = 'rounded' | 'square'; // Варианты формы кнопки
 export type ButtonLinkVariant = 'normal' | 'bold'; // Варианты стиля ссылки
-export type ButtonLinkColor = 'blue' | 'red' | 'green'; // Цвета ссылок
+export type ButtonLinkColor = 'blue' | 'orange'; // Цвета ссылок
 
 // Пропсы для обычных кнопок
 type ButtonProps = {
@@ -26,18 +27,11 @@ type ButtonLinkProps = {
 
 // Обычная кнопка
 const Button = ({ onClick, children, type = 'primary', variant = 'rounded', className }: ButtonProps) => {
-  const baseStyle = `px-4 py-2 text-white font-semibold ${
-    variant === 'rounded' ? 'rounded-full' : 'rounded'
-  }`;
-  const typeStyle =
-    type === 'primary'
-      ? 'bg-blue-500 hover:bg-blue-600'
-      : type === 'secondary'
-      ? 'bg-gray-500 hover:bg-gray-600'
-      : 'border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white';
+  const typeClass = type === 'primary' ? 'primary' : type === 'secondary' ? 'secondary' : 'outline';
+  const variantClass = variant === 'rounded' ? 'rounded' : 'square';
 
   return (
-    <button onClick={onClick} className={`${baseStyle} ${typeStyle} ${className}`}>
+    <button onClick={onClick} className={`button ${typeClass} ${variantClass} ${className || ''}`}>
       {children}
     </button>
   );
@@ -46,10 +40,7 @@ const Button = ({ onClick, children, type = 'primary', variant = 'rounded', clas
 // Кнопка с обводкой
 const ButtonOutline = ({ onClick, children, className }: ButtonProps) => {
   return (
-    <button
-      onClick={onClick}
-      className={`border border-blue-500 text-blue-500 px-4 py-2 rounded hover:bg-blue-500 hover:text-white ${className}`}
-    >
+    <button onClick={onClick} className={`button outline ${className || ''}`}>
       {children}
     </button>
   );
@@ -57,17 +48,11 @@ const ButtonOutline = ({ onClick, children, className }: ButtonProps) => {
 
 // Кнопка-ссылка
 const ButtonLink = ({ href, children, variant = 'normal', color = 'blue', className }: ButtonLinkProps) => {
-  const baseStyle = 'inline-block px-4 py-2 text-center font-semibold';
-  const variantStyle = variant === 'bold' ? 'font-bold' : 'font-normal';
-  const colorStyle =
-    color === 'blue'
-      ? 'text-blue-500 hover:underline'
-      : color === 'red'
-      ? 'text-red-500 hover:underline'
-      : 'text-green-500 hover:underline';
+  const colorClass = color === 'blue' ? 'link-blue' : 'link-orange';
+  const variantClass = variant === 'bold' ? 'link-bold' : 'link-normal';
 
   return (
-    <a href={href} className={`${baseStyle} ${variantStyle} ${colorStyle} ${className}`}>
+    <a href={href} className={`button-link ${colorClass} ${variantClass} ${className || ''}`}>
       {children}
     </a>
   );
@@ -81,23 +66,16 @@ const GoToLink = ({ href, children }: ButtonLinkProps) => (
 );
 
 const ShowMoreLink = ({ href, children }: ButtonLinkProps) => (
-  <ButtonLink href={href} variant="normal" color="green">
+  <ButtonLink href={href} variant="normal" color="orange">
     {children}
   </ButtonLink>
 );
 
 const AddLink = ({ href, children }: ButtonLinkProps) => (
-  <ButtonLink href={href} variant="bold" color="red">
+  <ButtonLink href={href} variant="bold" color="orange">
     {children}
   </ButtonLink>
 );
 
 // Экспорт компонентов
-export {
-  Button,
-  ButtonOutline,
-  ButtonLink,
-  GoToLink,
-  ShowMoreLink,
-  AddLink
-};
+export { Button, ButtonOutline, ButtonLink, GoToLink, ShowMoreLink, AddLink };

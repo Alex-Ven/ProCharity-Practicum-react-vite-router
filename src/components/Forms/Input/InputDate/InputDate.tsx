@@ -1,21 +1,41 @@
 import React from 'react';
 
-const InputDate = ({
-  value,
-  onChange,
-  className,
-}: {
+interface InputDateProps {
+  id: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
+  placeholder?: string;
+  required?: boolean;
   className?: string;
-}) => {
+}
+
+const InputDate = ({
+  id,
+  value,
+  onChange,
+  label,
+  placeholder,
+  required,
+  className,
+}: InputDateProps) => {
   return (
-    <input
-      type="date"
-      value={value}
-      onChange={onChange}
-      className={`input-date ${className}`}
-    />
+    <div className={`input-date-wrapper ${className || ''}`}>
+      {label && (
+        <label htmlFor={id} className="input-date-label">
+          {label}
+          {required && <span className="input-date-required">*</span>}
+        </label>
+      )}
+      <input
+        id={id}
+        type="date"
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="input-date"
+      />
+    </div>
   );
 };
 

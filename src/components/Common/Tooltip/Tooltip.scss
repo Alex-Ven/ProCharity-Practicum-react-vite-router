@@ -1,0 +1,37 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  &__text {
+    visibility: visible;
+    position: absolute;
+    top: 125%; /* Позиция подсказки над элементом */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background-color: #555;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 100%; /* Треугольник указывает на элемент */
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 6px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent; /* Цвет треугольника */
+    }
+  }
+
+  &:hover &__text {
+    opacity: 1;
+  }
+}

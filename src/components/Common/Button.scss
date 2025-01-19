@@ -1,0 +1,119 @@
+@use '../../scss/variables' as vars;
+
+/* Основные стили кнопки */
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: vars.$space-md vars.$space-lg;
+
+  min-width: 142px;
+  height: 56px;
+
+  font-family: vars.$font-family-primary;
+  font-size: vars.$font-size-base;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+
+  &.rounded {
+    border-radius: 50px;
+  }
+
+  &.square {
+    border-radius: 4px;
+  }
+
+  /* Primary кнопка */
+  &.primary {
+    background: vars.$button-primary-color;
+    color: vars.$background-color;
+
+    &:hover {
+      background: lighten(vars.$button-primary-color, 10%);
+    }
+
+    &:active {
+      background: darken(vars.$button-primary-color, 10%);
+    }
+  }
+
+  /* Secondary кнопка */
+  &.secondary {
+    background: vars.$button-secondary-color;
+    color: vars.$background-color;
+
+    &:hover {
+      background: lighten(vars.$button-secondary-color, 10%);
+    }
+
+    &:active {
+      background: darken(vars.$button-secondary-color, 10%);
+    }
+  }
+
+  /* Outline кнопка */
+  &.outline {
+    background: none;
+    border: 2px solid vars.$button-outline-color;
+    color: vars.$button-outline-color;
+
+    &:hover {
+      background: vars.$button-outline-color;
+      color: vars.$background-color;
+    }
+
+    &:active {
+      background: darken(vars.$button-outline-color, 10%);
+    }
+  }
+}
+
+/* Стили для кнопок-ссылок */
+.button-link {
+  display: inline-block;
+  padding: vars.$space-xs vars.$space-sm;
+  font-family: vars.$font-family-primary;
+  font-size: vars.$font-size-base;
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &.link-blue {
+    color: vars.$background-color;
+
+    &:hover {
+      background: vars.$button-outline-color;
+      color: vars.$link-blue-color;
+    }
+
+    &:active {
+      color: darken(vars.$link-blue-color, 10%);
+    }
+  }
+
+  &.link-orange {
+    color: vars.$link-orange-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: darken(vars.$link-orange-color, 10%);
+    }
+  }
+
+  &.link-bold {
+    font-weight: bold;
+  }
+
+  &.link-normal {
+    font-weight: normal;
+  }
+}

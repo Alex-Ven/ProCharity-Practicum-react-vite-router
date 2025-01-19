@@ -1,25 +1,6 @@
 import React from 'react';
+import { Input } from './Input';
 
-const InputPassword = ({
-  value,
-  onChange,
-  placeholder,
-  className,
-}: {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-  className?: string;
-}) => {
-  return (
-    <input
-      type="password"
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className={`input-password ${className}`}
-    />
-  );
+export const InputPassword = (props: Omit<React.ComponentProps<typeof Input>, 'type'>) => {
+  return <Input {...props} type="password" />;
 };
-
-export { InputPassword };

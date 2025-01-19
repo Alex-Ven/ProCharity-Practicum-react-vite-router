@@ -5,6 +5,14 @@ $primary-color: #374146;
 $secondary-color: #7dcdd7;
 $background-color: #ffffff;
 $text-color: #a0abb5;
+$button-primary-color: #EA5A0A; // Цвет основной кнопки (Primary)
+$button-secondary-color: #374146; // Цвет кнопки Secondary
+$button-outline-color: #A0ABB5; // Цвет кнопки Outline
+$outline-color: #A0ABB5; /* Цвет для кнопки с обводкой */
+$outline-color: #AA4000; /* Цвет для кнопки с обводкой */
+$link-blue-color: #007BFF;
+$link-orange-color: #EA5A0A;
+
 
 /* Шрифты */
 $font-family-primary: 'PT Root UI VF', sans-serif;
@@ -22,3 +30,23 @@ $space-sm: 16px;
 $space-md: 24px;
 $space-lg: 32px;
 $space-xl: 48px;
+
+/* Переменные для футера */
+$footer-background-color: #374146; /* Фон футера */
+$footer-text-color: #A0ABB5; /* Цвет текста футера */
+$footer-title-color: #C7D0DA; /* Цвет заголовков футера */
+$footer-link-hover-color: #007BFF; /* Цвет ссылок при наведении */
+$footer-border-color: #dddddd; /* Цвет верхней границы футера */
+
+/* Отступы */
+$footer-padding: 40px 20px;
+$footer-column-gap: 20px;
+$footer-column-margin-bottom: 15px;
+$footer-link-margin-bottom: 10px;
+$footer-bottom-margin-top: 30px;
+$footer-bottom-padding-top: 20px;
+$footer-bottom-gap: 15px;
+
+/* Шрифты */
+$footer-font-size: 14px;
+

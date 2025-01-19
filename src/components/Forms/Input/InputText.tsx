@@ -1,12 +1,6 @@
-// src/components/Forms/Input/InputText/InputText.tsx
-const InputText = ({
-	value,
-	onChange,
-}: {
-	value: string;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}) => {
-	return <input type="text" value={value} onChange={onChange} />;
-};
+import React from 'react';
+import { Input } from './Input';
 
-export { InputText };
+export const InputText = (props: Omit<React.ComponentProps<typeof Input>, 'type'>) => {
+  return <Input {...props} type="text" />;
+};
