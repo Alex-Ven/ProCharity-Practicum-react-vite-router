@@ -1,0 +1,57 @@
+@use '../../../../scss/variables' as vars;
+
+/* Стили для кнопок-ссылок */
+.button-link {
+  display: inline-block;
+  padding: vars.$space-xs vars.$space-lg;
+  font-family: vars.$font-family-primary;
+  font-size: vars.$font-size-base;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  border-radius: 6px;
+  color: vars.$background-color;
+
+  /* Цвета */
+  &.color-blue {
+    background-color: vars.$link-blue-color;
+
+    &:hover {
+      color: vars.$button-secondary-color;
+      background: lighten(vars.$link-blue-color, 10%)
+    }
+
+    &:active {
+      color: darken(vars.$link-blue-color, 10%);
+    }
+  }
+
+  &.color-orange {
+    background-color: vars.$link-orange-color;
+
+    &:hover {
+      color: vars.$button-secondary-color;
+      background: lighten(vars.$link-orange-color, 10%)
+    }
+
+    &:active {
+      color: darken(vars.$link-orange-color, 10%);
+    }
+  }
+
+  /* Варианты шрифта */
+  &.variant-bold {
+    font-weight: bold;
+  }
+
+  &.variant-normal {
+    font-weight: normal;
+  }
+
+  /* Disabled стиль */
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+    text-decoration: none;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Card.scss';
 
 // Базовый компонент Card
 const Card = ({ children }: { children: React.ReactNode }) => {
@@ -27,8 +28,8 @@ const CardFundStaff = ({ children }: { children: React.ReactNode }) => {
   return <div className="card card-fund-staff">{children}</div>;
 };
 
-const CardTask = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-task">{children}</div>;
+const CardLogin = ({ children }: { children: React.ReactNode }) => {
+  return <div className="card card-login">{children}</div>;
 };
 
 const CardCategoryLarge = ({ children }: { children: React.ReactNode }) => {
@@ -55,7 +56,7 @@ export {
   CardCompany,
   CardFund,
   CardFundStaff,
-  CardTask,
+  CardLogin,
   CardCategoryLarge,
   CardContentItem,
   CardNews,

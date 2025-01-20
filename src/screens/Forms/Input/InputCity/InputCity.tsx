@@ -2,15 +2,15 @@ import React from 'react';
 
 interface InputCityProps {
   id: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string; // Значение должно быть строкой
+  onChange: (value: string) => void; // Принимает строку вместо ChangeEvent
   label?: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
 }
 
-const InputCity = ({
+const InputCity: React.FC<InputCityProps> = ({
   id,
   value,
   onChange,
@@ -18,7 +18,12 @@ const InputCity = ({
   placeholder,
   required,
   className,
-}: InputCityProps) => {
+}) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Вызываем `onChange`, передавая только значение поля ввода
+    onChange(e.target.value);
+  };
+
   return (
     <div className={`input-city-wrapper ${className || ''}`}>
       {label && (
@@ -31,9 +36,10 @@ const InputCity = ({
         id={id}
         type="text"
         value={value}
-        onChange={onChange}
+        onChange={handleInputChange} // Используем обработчик изменений
         placeholder={placeholder}
         className="input-city"
+        required={required}
       />
     </div>
   );

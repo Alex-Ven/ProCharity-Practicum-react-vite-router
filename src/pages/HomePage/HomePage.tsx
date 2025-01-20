@@ -1,17 +1,45 @@
-import React from 'react';
-import { Header } from '../../components/Common/Layout/Header/Header';
-import { SectionHeroUrgant } from '../../components/Public/Hero/SectionHeroUrgant/SectionHeroUrgant';
-import { Footer } from '../../components/Common/Layout/Footer/Footer'; // Импортируем футер
-import './HomePage.scss';
+import React, { useState } from 'react';
+import { Layout } from '../../components/Common/Layout/Layout';
+import { Section } from '../../components/Common/Layout/Section';
+import { Modal } from '../../containers/Modal/Modal';
+import { LoginForm } from '../../screens/Forms/LoginForm';
+import { RegistrationForm } from '../../screens/Forms/RegistrationForm';
+import { ButtonLink } from '../../components/Common/Action/Link/Link'; // Подключаем ваш компонент кнопки
 
 export const HomePage = () => {
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isRegisterOpen, setRegisterOpen] = useState(false);
+
   return (
-    <div className="home-page">
-      <Header />
-      <main className="home-page__content">
-        <SectionHeroUrgant />
-      </main>
-      <Footer /> 
-    </div>
+    <Layout>
+      <Section>
+        <ButtonLink
+          color="orange"
+          variant="normal"
+          onClick={() => setLoginOpen(true)}
+        >
+          Войти
+        </ButtonLink>
+        <ButtonLink
+          color="blue"
+          variant="bold"
+          onClick={() => setRegisterOpen(true)}
+        >
+          Присоединиться
+        </ButtonLink>
+      </Section>
+
+      {isLoginOpen && (
+        <Modal onClose={() => setLoginOpen(false)}>
+          <LoginForm />
+        </Modal>
+      )}
+
+      {isRegisterOpen && (
+        <Modal onClose={() => setRegisterOpen(false)}>
+          <RegistrationForm />
+        </Modal>
+      )}
+    </Layout>
   );
 };

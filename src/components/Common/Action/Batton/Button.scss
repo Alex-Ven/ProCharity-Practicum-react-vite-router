@@ -1,4 +1,4 @@
-@use '../../scss/variables' as vars;
+@use '../../../../scss/variables' as vars;
 
 /* Основные стили кнопки */
 .button {
@@ -20,16 +20,16 @@
   transition: background 0.3s ease, color 0.3s ease;
 
   /* Rounded и Square варианты */
-  &.rounded {
+  &.variant-rounded {
     border-radius: 50px;
   }
 
-  &.square {
+  &.variant-square {
     border-radius: 4px;
   }
 
   /* Primary кнопка */
-  &.primary {
+  &.type-primary {
     background: vars.$button-primary-color;
     color: vars.$background-color;
 
@@ -43,7 +43,7 @@
   }
 
   /* Secondary кнопка */
-  &.secondary {
+  &.type-secondary {
     background: vars.$button-secondary-color;
     color: vars.$background-color;
 
@@ -57,7 +57,7 @@
   }
 
   /* Outline кнопка */
-  &.outline {
+  &.type-outline {
     background: none;
     border: 2px solid vars.$button-outline-color;
     color: vars.$button-outline-color;
@@ -77,56 +77,5 @@
     cursor: not-allowed;
     opacity: 0.6;
     pointer-events: none;
-  }
-}
-
-/* Стили для кнопок-ссылок */
-.button-link {
-  display: inline-block;
-  padding: vars.$space-xs vars.$space-sm;
-  font-family: vars.$font-family-primary;
-  font-size: vars.$font-size-base;
-  text-decoration: none;
-  transition: color 0.3s ease;
-
-  &.link-blue {
-    color: vars.$link-blue-color;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &:active {
-      color: darken(vars.$link-blue-color, 10%);
-    }
-  }
-
-  &.link-orange {
-    color: vars.$link-orange-color;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &:active {
-      color: darken(vars.$link-orange-color, 10%);
-    }
-  }
-
-  /* Bold и Normal варианты */
-  &.link-bold {
-    font-weight: bold;
-  }
-
-  &.link-normal {
-    font-weight: normal;
-  }
-
-  /* Disabled стиль для ссылок */
-  &.disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-    pointer-events: none;
-    text-decoration: none;
   }
 }

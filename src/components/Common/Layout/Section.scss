@@ -1,0 +1,12 @@
+@use '../../../scss/variables' as vars;
+
+.section {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //height: 100vh; /* Занимает всю высоту экрана */
+  padding: vars.$space-md;
+  gap: 20px;
+}

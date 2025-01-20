@@ -2,15 +2,15 @@ import React from 'react';
 
 interface InputDateProps {
   id: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string; // Значение даты в формате строки
+  onChange: (value: string) => void; // Принимает строку вместо ChangeEvent
   label?: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
 }
 
-const InputDate = ({
+const InputDate: React.FC<InputDateProps> = ({
   id,
   value,
   onChange,
@@ -18,7 +18,12 @@ const InputDate = ({
   placeholder,
   required,
   className,
-}: InputDateProps) => {
+}) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Извлекаем значение даты из события и передаем его дальше
+    onChange(e.target.value);
+  };
+
   return (
     <div className={`input-date-wrapper ${className || ''}`}>
       {label && (
@@ -31,9 +36,10 @@ const InputDate = ({
         id={id}
         type="date"
         value={value}
-        onChange={onChange}
+        onChange={handleInputChange} // Используем обработчик изменений
         placeholder={placeholder}
         className="input-date"
+        required={required}
       />
     </div>
   );

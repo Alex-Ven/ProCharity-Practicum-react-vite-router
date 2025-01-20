@@ -1,140 +1,118 @@
-/* Block: header */
+@use '../../../../scss/variables' as vars; // Импортируем файл переменных с пространством имен
+
 .header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  padding: 16px 80px;
+  padding: vars.$space-sm vars.$space-md; // Используем переменные через vars
+  background-color: vars.$secondary-color; // Белый фон
+  height: 60px; // Фиксированная высота хедера
+  border-bottom: 1px solid vars.$outline-color; // Линия снизу
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Тень
+}
 
-  position: absolute;
-  width: 100%;
-  height: 136px;
-  left: 0;
-  top: 0;
+.header__logo {
+  flex-shrink: 0; // Запрещаем сужение
+}
 
-  background: #7dcdd7;
-  border: 1px solid #000000;
+.header__logo img {
+  max-height: 40px; // Максимальная высота логотипа
+  object-fit: contain; // Корректное отображение картинки
+}
 
-  &__logo {
-    position: absolute;
-    width: 102.9px;
-    height: 104px;
-    left: calc(50% - 102.9px / 2 - 508.55px);
-    top: calc(50% - 104px / 2);
+.header__navigation {
+  flex-grow: 1; // Меню занимает оставшееся пространство
+  text-align: center; // Центрируем содержимое
+}
 
-    background: url('/path-to-logo.png') no-repeat center center;
-    background-size: contain;
+.header__menu {
+  list-style: none; // Убираем маркеры списка
+  display: inline-flex; // Горизонтальное расположение пунктов
+  gap: vars.$space-sm; // Отступы между пунктами меню
+  padding: 0; // Убираем внутренние отступы
+  margin: 0; // Убираем внешние отступы
+}
+
+.header__menu-item {
+  text-decoration: none; // Убираем подчеркивание ссылок
+  color: vars.$primary-color; // Цвет текста
+  font-family: vars.$font-family-primary; // Основной шрифт
+  font-size: vars.$font-size-base; // Базовый размер шрифта
+  font-weight: 500; // Полужирный текст
+  transition: color 0.3s ease; // Плавное изменение цвета
+}
+
+.header__menu-item:hover {
+  color: vars.$link-blue-color; // Синий цвет при наведении
+}
+
+.header__buttons {
+  display: flex; // Горизонтальное расположение
+  align-items: center; // Выравнивание по вертикали
+  gap: vars.$space-xs; // Расстояние между кнопками
+}
+
+.header__action-button {
+  display: inline-flex; // Для центрирования текста
+  align-items: center; // Центрируем по вертикали
+  justify-content: center; // Центрируем по горизонтали
+  padding: vars.$space-xs vars.$space-sm; // Внутренние отступы
+  font-size: vars.$font-size-sm; // Меньший размер текста
+  font-family: vars.$font-family-primary; // Основной шрифт
+  font-weight: 600; // Полужирный текст
+  text-decoration: none; // Убираем подчеркивание
+  border-radius: 20px; // Скругленные углы
+  color: #fff; // Белый текст
+  background-color: vars.$button-primary-color; // Основной цвет кнопки
+  transition: background-color 0.3s ease; // Плавное изменение фона
+}
+
+.header__action-button:hover {
+  background-color: darken(vars.$button-primary-color, 10%); // Темнее на 10% при наведении
+}
+
+.header__account {
+  display: flex; // Горизонтальное расположение
+  align-items: center; // Выравнивание по вертикали
+  gap: vars.$space-xs; // Расстояние между элементами
+}
+
+.header__account-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; // Круглый аватар
+  background-color: vars.$outline-color; // Цвет фона
+  background-size: cover;
+  background-position: center;
+}
+
+.header__account-badge {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; // Круглый бейдж
+  background-color: vars.$secondary-color; // Цвет бейджа
+  border: 2px solid vars.$background-color; // Белая обводка
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap; // Перенос строк
+    padding: vars.$space-xs vars.$space-sm; // Меньшие отступы
+    height: auto; // Автоматическая высота
   }
 
-  &__navigation {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 32px;
-
-    position: absolute;
-    left: 17.14%;
-    right: 24.73%;
-    top: 38.46%;
-    bottom: 38.46%;
-  }
-
-  &__menu {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 32px;
-  }
-
-  &__menu-item {
-    font-family: 'PT Root UI VF', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-
-    color: #ffffff;
-    text-decoration: none;
-
-    transition: color 0.3s;
-
-    &:hover {
-      color: #ea5a0a;
-    }
-  }
-
-  &__buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 16px;
-
-    position: absolute;
-    top: calc(50% - 48px / 2);
-  }
-
-  &__action-button {
-    display: flex;
+  .header__menu {
+    flex-wrap: wrap; // Перенос пунктов меню
     justify-content: center;
-    align-items: center;
-    padding: 12px 18px;
-    gap: 8px;
-
-    width: 154px;
-    height: 48px;
-
-    background: #ea5a0a;
-    border-radius: 24px;
-
-    font-family: 'PT Root UI VF', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-
-    color: #ffffff;
-    text-decoration: none;
-
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: #d14806;
-    }
+    gap: vars.$space-xs; // Меньшие отступы между пунктами
   }
 
-  &__account {
-    display: flex;
+  .header__buttons {
     justify-content: center;
-    align-items: center;
-    position: relative;
+    gap: vars.$space-xs; // Уменьшенное расстояние
+  }
 
-    width: 48px;
-    height: 48px;
-
-    background: #ffffff;
-    border-radius: 24px;
-
-    &-photo {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: url('/path-to-photo.png') no-repeat center center;
-      background-size: cover;
-      border-radius: 24px;
-    }
-
-    &-badge {
-      position: absolute;
-      display: none; /* Показать, если нужно */
-      width: 16px;
-      height: 16px;
-      right: 0;
-      top: 0;
-
-      background: #ea5a0a;
-      border-radius: 16px;
-    }
+  .header__account {
+    margin-top: vars.$space-xs; // Отступ сверху
   }
 }

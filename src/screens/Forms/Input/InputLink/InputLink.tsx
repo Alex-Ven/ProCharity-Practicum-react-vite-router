@@ -2,15 +2,15 @@ import React from 'react';
 
 interface InputLinkProps {
   id: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string; // Значение ссылки
+  onChange: (value: string) => void; // Принимает строку вместо ChangeEvent
   label?: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
 }
 
-const InputLink = ({
+const InputLink: React.FC<InputLinkProps> = ({
   id,
   value,
   onChange,
@@ -18,7 +18,12 @@ const InputLink = ({
   placeholder,
   required,
   className,
-}: InputLinkProps) => {
+}) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Передаем только значение
+    onChange(e.target.value);
+  };
+
   return (
     <div className={`input-link-wrapper ${className || ''}`}>
       {label && (
@@ -31,9 +36,10 @@ const InputLink = ({
         id={id}
         type="url"
         value={value}
-        onChange={onChange}
+        onChange={handleInputChange} // Обработчик изменений
         placeholder={placeholder}
         className="input-link"
+        required={required}
       />
     </div>
   );

@@ -1,31 +1,29 @@
 import React, { useState } from 'react';
-import { Button } from '../Common/Button';
-import { InputEmail } from '../Forms/Input/InputEmail';
+import { Button } from '../../components/Common/Action/Batton/Button';
+import { Field } from '../Forms/Field'; // Импортируем Field
+import { InputEmail } from './Input/InputEmail';
 import { InputPassword } from './Input/InputPassword';
-import { loginUser } from '../../api/loginApi'; // Импорт API
+import { loginUser } from '../../api/loginApi';
 import './LoginForm.scss';
 
 export const LoginForm = () => {
-  const [email, setEmail] = useState<string>(''); // Тип явно указан
-  const [password, setPassword] = useState<string>(''); // Тип явно указан
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Обработчик изменения email
   const handleEmailChange = (value: string) => {
-    setEmail(value); // Гарантируем, что value — строка
+    setEmail(value);
   };
 
-  // Обработчик изменения пароля
   const handlePasswordChange = (value: string) => {
-    setPassword(value); // Гарантируем, что value — строка
+    setPassword(value);
   };
 
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-    setError(null); // Сброс ошибки
+    setError(null);
 
-    // Проверка на заполненность полей
     if (!email || !password) {
       setError('Все поля должны быть заполнены.');
       return;
@@ -47,9 +45,11 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className="login-form" onSubmit={(e) => {
-      void handleSubmit(e);
-    }}
+    <form
+      className="login-form"
+      onSubmit={(e) => {
+        void handleSubmit(e);
+      }}
     >
       <h2 className="login-form__title">Вход в личный кабинет</h2>
 
@@ -57,30 +57,32 @@ export const LoginForm = () => {
       {error && <p className="login-form__error">{error}</p>}
 
       {/* Поле для ввода email */}
-      <InputEmail
-        id="email"
-        value={email}
-        onChange={handleEmailChange} // Передаем обработчик с явным типом
-        label="Email"
-        placeholder="Электронная почта"
-        required
-      />
+      <Field label="Email">
+        <InputEmail
+          id="email"
+          value={email}
+          onChange={handleEmailChange}
+          placeholder="Электронная почта"
+          required
+        />
+      </Field>
 
       {/* Поле для ввода пароля */}
-      <InputPassword
-        id="password"
-        value={password}
-        onChange={handlePasswordChange} // Передаем обработчик с явным типом
-        label="Пароль"
-        placeholder="Пароль"
-        required
-      />
+      <Field label="Пароль">
+        <InputPassword
+          id="password"
+          value={password}
+          onChange={handlePasswordChange}
+          placeholder="Пароль"
+          required
+        />
+      </Field>
 
       <div className="login-form__submit-button">
         <Button type="primary" variant="rounded" disabled={loading}>
           {loading ? 'Вход...' : 'Войти'}
         </Button>
       </div>
-      </form>
+    </form>
   );
 };
