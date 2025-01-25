@@ -1,0 +1,61 @@
+/* inverted-links.css */
+
+/* Основной контейнер для ссылок */
+.inverted-links-container {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 8px;
+
+  /* Позиционирование */
+  position: absolute;
+  width: 117px;
+  height: 136px;
+  left: 1173px;
+  top: 766px;
+
+  /* Фон */
+  background: #374146;
+}
+
+/* Общие стили текста ссылки */
+.inverted-link {
+  width: 85px;
+  height: 20px;
+
+  /* Шрифт */
+  font-family: 'PT Root UI VF', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px; /* идентично высоте строки, 143% */
+  text-decoration-line: underline;
+
+  /* Автовёрстка */
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Стили для различных цветов ссылок */
+.inverted-link--white {
+  color: #048AA7;
+  order: 0;
+}
+
+.inverted-link--gray {
+  color: #C7D0DA; /* black/020 */
+  order: 1;
+}
+
+.inverted-link--light-gray {
+  color: #F8FBFF; /* black/005 */
+  order: 2;
+}
+
+.inverted-link--orange {
+  color: #AA4000; /* orange/300 */
+  order: 3;
+}

@@ -1,0 +1,81 @@
+@use '../../../../scss/variables' as vars;
+
+/* Основные стили кнопки */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: vars.$space-md vars.$space-lg;
+
+  min-width: 142px;
+  height: 56px;
+
+  font-family: vars.$font-family-primary;
+  font-size: vars.$font-size-base;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+
+  /* Rounded и Square варианты */
+  &.variant-rounded {
+    border-radius: 50px;
+  }
+
+  &.variant-square {
+    border-radius: 4px;
+  }
+
+  /* Primary кнопка */
+  &.type-primary {
+    background: vars.$button-primary-color;
+    color: vars.$background-color;
+
+    &:hover {
+      background: lighten(vars.$button-primary-color, 10%);
+    }
+
+    &:active {
+      background: darken(vars.$button-primary-color, 10%);
+    }
+  }
+
+  /* Secondary кнопка */
+  &.type-secondary {
+    background: vars.$button-secondary-color;
+    color: vars.$background-color;
+
+    &:hover {
+      background: lighten(vars.$button-secondary-color, 10%);
+    }
+
+    &:active {
+      background: darken(vars.$button-secondary-color, 10%);
+    }
+  }
+
+  /* Outline кнопка */
+  &.type-outline {
+    background: none;
+    border: 2px solid vars.$button-outline-color;
+    color: vars.$button-outline-color;
+
+    &:hover {
+      background: vars.$button-outline-color;
+      color: vars.$background-color;
+    }
+
+    &:active {
+      background: darken(vars.$button-outline-color, 10%);
+    }
+  }
+
+  /* Disabled стиль */
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}

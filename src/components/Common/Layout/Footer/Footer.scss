@@ -1,0 +1,68 @@
+@use '../../../../scss/variables' as vars;
+
+.footer {
+  background: vars.$footer-background-color; /* Фон футера */
+  color: vars.$footer-text-color; /* Цвет текста футера */
+  padding: vars.$footer-padding;
+  font-size: vars.$footer-font-size;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: vars.$footer-column-gap;
+  }
+
+  &__column {
+    flex: 1;
+    min-width: 200px;
+
+    & > .footer__title {
+      font-weight: bold;
+      margin-bottom: vars.$footer-column-margin-bottom;
+      color: vars.$footer-title-color;
+    }
+
+    & > .footer__nav {
+      display: flex;
+      flex-direction: column;
+
+      .footer__link {
+        text-decoration: none;
+        margin-bottom: vars.$footer-link-margin-bottom;
+        color: vars.$footer-text-color;
+
+        &:hover {
+          color: vars.$footer-link-hover-color;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: vars.$footer-bottom-margin-top;
+    border-top: 1px solid vars.$footer-border-color;
+    padding-top: vars.$footer-bottom-padding-top;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .footer__text {
+      margin: 0;
+    }
+
+    .footer__bottom-nav {
+      display: flex;
+      gap: vars.$footer-bottom-gap;
+
+      .footer__link {
+        text-decoration: none;
+        color: vars.$footer-text-color;
+
+        &:hover {
+          color: vars.$footer-link-hover-color;
+        }
+      }
+    }
+  }
+}

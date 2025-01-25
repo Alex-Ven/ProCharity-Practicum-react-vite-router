@@ -1,0 +1,76 @@
+@use './variables' as vars;
+
+/* Вариации текста */
+@mixin text-bold {
+  font-weight: bold;
+}
+
+@mixin text-italic {
+  font-style: italic;
+}
+
+@mixin text-uppercase {
+  text-transform: uppercase;
+}
+
+@mixin text-lowercase {
+  text-transform: lowercase;
+}
+
+@mixin text-capitalize {
+  text-transform: capitalize;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin text-left {
+  text-align: left;
+}
+
+@mixin text-right {
+  text-align: right;
+}
+
+/* Размеры шрифтов */
+@mixin text-lg {
+  font-size: vars.$font-size-lg;
+}
+
+@mixin text-sm {
+  font-size: vars.$font-size-sm;
+}
+
+@mixin text-base {
+  font-size: vars.$font-size-base;
+}
+
+@mixin text-h1 {
+  font-size: 2em;
+}
+
+@mixin text-h2 {
+  font-size: 1.75em;
+}
+
+@mixin text-h3 {
+  font-size: 1.5em;
+}
+
+/* Применение цвета */
+@mixin text-primary {
+  color: vars.$primary-color;
+}
+
+@mixin text-secondary {
+  color: vars.$secondary-color;
+}
+
+@mixin text-background {
+  background-color: vars.$background-color;
+}
+
+@mixin text-color {
+  color: vars.$text-color;
+}

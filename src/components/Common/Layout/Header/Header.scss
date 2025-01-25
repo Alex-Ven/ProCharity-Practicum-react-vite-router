@@ -1,0 +1,118 @@
+@use '../../../../scss/variables' as vars; // Импортируем файл переменных с пространством имен
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: vars.$space-sm vars.$space-md; // Используем переменные через vars
+  background-color: vars.$secondary-color; // Белый фон
+  height: 60px; // Фиксированная высота хедера
+  border-bottom: 1px solid vars.$outline-color; // Линия снизу
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Тень
+}
+
+.header__logo {
+  flex-shrink: 0; // Запрещаем сужение
+}
+
+.header__logo img {
+  max-height: 40px; // Максимальная высота логотипа
+  object-fit: contain; // Корректное отображение картинки
+}
+
+.header__navigation {
+  flex-grow: 1; // Меню занимает оставшееся пространство
+  text-align: center; // Центрируем содержимое
+}
+
+.header__menu {
+  list-style: none; // Убираем маркеры списка
+  display: inline-flex; // Горизонтальное расположение пунктов
+  gap: vars.$space-sm; // Отступы между пунктами меню
+  padding: 0; // Убираем внутренние отступы
+  margin: 0; // Убираем внешние отступы
+}
+
+.header__menu-item {
+  text-decoration: none; // Убираем подчеркивание ссылок
+  color: vars.$primary-color; // Цвет текста
+  font-family: vars.$font-family-primary; // Основной шрифт
+  font-size: vars.$font-size-base; // Базовый размер шрифта
+  font-weight: 500; // Полужирный текст
+  transition: color 0.3s ease; // Плавное изменение цвета
+}
+
+.header__menu-item:hover {
+  color: vars.$link-blue-color; // Синий цвет при наведении
+}
+
+.header__buttons {
+  display: flex; // Горизонтальное расположение
+  align-items: center; // Выравнивание по вертикали
+  gap: vars.$space-xs; // Расстояние между кнопками
+}
+
+.header__action-button {
+  display: inline-flex; // Для центрирования текста
+  align-items: center; // Центрируем по вертикали
+  justify-content: center; // Центрируем по горизонтали
+  padding: vars.$space-xs vars.$space-sm; // Внутренние отступы
+  font-size: vars.$font-size-sm; // Меньший размер текста
+  font-family: vars.$font-family-primary; // Основной шрифт
+  font-weight: 600; // Полужирный текст
+  text-decoration: none; // Убираем подчеркивание
+  border-radius: 20px; // Скругленные углы
+  color: #fff; // Белый текст
+  background-color: vars.$button-primary-color; // Основной цвет кнопки
+  transition: background-color 0.3s ease; // Плавное изменение фона
+}
+
+.header__action-button:hover {
+  background-color: darken(vars.$button-primary-color, 10%); // Темнее на 10% при наведении
+}
+
+.header__account {
+  display: flex; // Горизонтальное расположение
+  align-items: center; // Выравнивание по вертикали
+  gap: vars.$space-xs; // Расстояние между элементами
+}
+
+.header__account-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; // Круглый аватар
+  background-color: vars.$outline-color; // Цвет фона
+  background-size: cover;
+  background-position: center;
+}
+
+.header__account-badge {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; // Круглый бейдж
+  background-color: vars.$secondary-color; // Цвет бейджа
+  border: 2px solid vars.$background-color; // Белая обводка
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap; // Перенос строк
+    padding: vars.$space-xs vars.$space-sm; // Меньшие отступы
+    height: auto; // Автоматическая высота
+  }
+
+  .header__menu {
+    flex-wrap: wrap; // Перенос пунктов меню
+    justify-content: center;
+    gap: vars.$space-xs; // Меньшие отступы между пунктами
+  }
+
+  .header__buttons {
+    justify-content: center;
+    gap: vars.$space-xs; // Уменьшенное расстояние
+  }
+
+  .header__account {
+    margin-top: vars.$space-xs; // Отступ сверху
+  }
+}
