@@ -21,7 +21,36 @@ export default buttonLinkMeta;
 
 type Story = StoryObj<typeof ButtonLink>;
 
-// Истории для кнопок-ссылок
+// Сетка для всех ссылок
+export const LinkGrid: Story = {
+  render: () => (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+        gap: '16px',
+      }}
+    >
+      <ButtonLink href="#" color="blue" variant="normal">
+        Blue Normal
+      </ButtonLink>
+      <ButtonLink href="#" color="blue" variant="bold">
+        Blue Bold
+      </ButtonLink>
+      <ButtonLink href="#" color="orange" variant="normal">
+        Orange Normal
+      </ButtonLink>
+      <ButtonLink href="#" color="orange" variant="bold">
+        Orange Bold
+      </ButtonLink>
+      <GoToLink href="#">Go to Link</GoToLink>
+      <ShowMoreLink href="#">Show More</ShowMoreLink>
+      <AddLink href="#">Add Link</AddLink>
+    </div>
+  ),
+};
+
+// Истории для отдельных кнопок-ссылок
 export const BlueLink: Story = {
   args: {
     href: '#',

@@ -1,10 +1,9 @@
-import { RouteObject } from 'react-router-dom';
-import HomePageRoute from '../pages/HomePage/HomePage.route';
-import RegistrationPageRoute from '../pages/RegistrationPage/RegistrationPage.route';
-import LoginPageRoute from '../pages/LoginPage/LoginPage.route';
+import main from "../pages/HomePage";
+import login from "../pages/LoginPage";
+import register from "../pages/RegistrationPage";
 
-export const routes: RouteObject[] = [
-	HomePageRoute,
-	RegistrationPageRoute,
-	LoginPageRoute,
+export const routes = [
+	{ index: true, ...main },
+	{ path: '/login', ...login },
+	{ path: '/register', ...register }
 ];

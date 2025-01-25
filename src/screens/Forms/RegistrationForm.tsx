@@ -9,6 +9,7 @@ import { InputDate } from './Input/InputDate/InputDate';
 import { InputLink } from './Input/InputLink/InputLink';
 import { Button } from '../../components/Common/Action/Batton/Button';
 import { registerUser } from '../../api/registrationApi';
+import { Form } from 'react-router-dom'; // Подключение Form из react-router
 import './RegistrationForm.scss';
 
 export const RegistrationForm = () => {
@@ -66,7 +67,7 @@ export const RegistrationForm = () => {
 		registerUser(formData)
 			.then((response) => {
 				console.log('Response from API:', response);
-				alert(response.message);
+				alert(response.message || 'Регистрация прошла успешно');
 			})
 			.catch((err) => {
 				if (err instanceof Error) {
@@ -81,7 +82,8 @@ export const RegistrationForm = () => {
 	return (
 		<div className="register-form">
 			<h2 className="register-form__title">Личные данные</h2>
-			<form className="register-form__form" onSubmit={handleSubmit}>
+			{/* Используем Form из react-router */}
+			<Form method="post" className="register-form__form" onSubmit={handleSubmit}>
 				{error && <p className="register-form__error">{error}</p>}
 
 				<Field label="Имя пользователя">
@@ -169,7 +171,7 @@ export const RegistrationForm = () => {
 						Зарегистрироваться
 					</Button>
 				</div>
-			</form>
+			</Form>
 		</div>
 	);
 };

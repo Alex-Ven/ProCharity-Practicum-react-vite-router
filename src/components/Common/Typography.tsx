@@ -1,3 +1,4 @@
+import { ParseKeys } from 'i18next';
 import React from 'react';
 import { useTranslation } from 'react-i18next'; // Импортируем хук useTranslation
 
@@ -14,36 +15,23 @@ type TextVariant =
   | 'primary'
   | 'secondary';
 
-// Список допустимых ключей переводов
-type TranslationKeys =
-  | 'demo.welcomeUser'
-  | 'demo.logIn'
-  | 'demo.logOut'
-  | 'demo.signUp'
-  | 'main.title'
-  | 'main.description'
-  | 'main.applyVolunteer'
-  | 'main.volunteerMotivation'
-  | 'main.applyFund'
-  | 'main.fundMotivation';
-
 // Пропсы для компонента Title
 type TitleProps = {
-  value: TranslationKeys; // Тип ключа перевода
+  value: ParseKeys; // Тип ключа перевода
   className?: string; // Дополнительные классы
 };
 
 // Пропсы для компонента Text
 type TextProps = {
-  value: TranslationKeys; // Тип ключа перевода
-  className?: string; // Дополнительные классы
+  value: ParseKeys; 
+  className?: string; 
 };
 
 // Пропсы для компонента TextVariants
 type TextVariantsProps = {
-  value: TranslationKeys; // Тип ключа перевода
-  variant: TextVariant; // Вариант текста
-  className?: string; // Дополнительные классы
+  value: ParseKeys; 
+  variant: TextVariant; 
+  className?: string; 
 };
 
 // Компонент Title

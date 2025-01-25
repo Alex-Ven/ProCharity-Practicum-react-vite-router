@@ -5,20 +5,17 @@
   flex-direction: column;
   min-height: 100vh; // Занимаем всю высоту экрана
 
-  // Контент между хедером и футером
   .layout__content {
-    flex-grow: 1; // Заставляем main занимать всё доступное пространство
-    display: flex; // Для выравнивания внутреннего содержимого
-    flex-direction: column; // Вложенные элементы располагаются вертикально
-    padding: vars.$space-sm vars.$space-md; // Отступы для основного содержимого
+    flex-grow: 1;
+    display: flex; 
+    flex-direction: column; 
+    padding: vars.$space-sm vars.$space-md; 
   }
 
-  // Хедер
   header {
     flex-shrink: 0; // Фиксированная высота
   }
 
-  // Футер
   footer {
     flex-shrink: 0; // Фиксированная высота
   }

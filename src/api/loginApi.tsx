@@ -15,7 +15,7 @@ export interface MockLoginResponse {
 export const loginUser = (formData: LoginFormData): Promise<MockLoginResponse> => {
   console.log('Авторизация данных отправлена на сервер:', formData);
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       if (formData.email === 'test@example.com' && formData.password === 'password123') {
         resolve({
@@ -24,9 +24,11 @@ export const loginUser = (formData: LoginFormData): Promise<MockLoginResponse> =
           token: 'fake-jwt-token',
         });
       } else {
-        reject(new Error('Неверный email или пароль.'));
+        resolve({
+          success: false,
+          message: 'Неверный email или пароль.',
+        });
       }
     }, 1000); // Задержка в 1 секунду
   });
 };
-

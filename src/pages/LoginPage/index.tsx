@@ -2,21 +2,19 @@ import React, { lazy, Suspense } from 'react';
 import { ActionFunctionArgs, LoaderFunctionArgs } from 'react-router';
 import { fetchUser, loginUser, User } from '../../api/userApi';
 
-interface ActionResponse {
-  success?: boolean;
-  error?: string;
-}
-
 // Лоадер: заглушка, если потребуется загрузить данные
 async function loader({ request }: LoaderFunctionArgs): Promise<User | null> {
   return await fetchUser();
 }
 
 // Экшен: обработка авторизации
-async function action({ request }: ActionFunctionArgs): Promise<ActionResponse> {
+async function action({ request }: ActionFunctionArgs): Promise<{ success?: boolean; error?: string }> {
   const formData = await request.formData();
-  const email = formData.get('email') as string | null;
-  const password = formData.get('password') as string | null;
+  
+  // Преобразуем данные формы в объект
+  const formObject = Object.fromEntries(formData.entries());
+
+  const { email, password } = formObject as { email: string; password: string };
 
   if (email && password) {
     const result = await loginUser({ email, password });
@@ -31,21 +29,18 @@ async function action({ request }: ActionFunctionArgs): Promise<ActionResponse> 
 
 // Lazy-загрузка компонента экрана
 const LazyLoginPage = lazy(() =>
-  import('./LoginPage.screen').then(module => ({
+  import('./LoginPage').then(module => ({
     default: module.LoginPage,
   }))
 );
 
-const LoginPageWrapper = (
-  props: JSX.IntrinsicAttributes & { children?: React.ReactNode }
-) => (
+const LoginPageWrapper = (props: JSX.IntrinsicAttributes & { children?: React.ReactNode }) => (
   <Suspense fallback={<div>Загрузка...</div>}>
     <LazyLoginPage {...props} />
   </Suspense>
 );
 
 export default {
-  path: "/login",
   loader,
   action,
   element: <LoginPageWrapper />,

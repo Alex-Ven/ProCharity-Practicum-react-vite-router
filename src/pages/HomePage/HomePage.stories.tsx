@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import { HomePage } from '../HomePage/HomePage';
-//import '../../styles/index.scss'; // Подключаем общие стили, если требуется
 
 export default {
   title: 'Pages/HomePage',

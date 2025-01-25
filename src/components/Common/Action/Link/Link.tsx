@@ -6,14 +6,14 @@ import { withVariants } from '../../../../utils/variants';
 export type ButtonLinkVariant = 'normal' | 'bold';
 export type ButtonLinkColor = 'blue' | 'orange';
 
-type ButtonLinkProps = {
+export type ButtonLinkProps = {
   href?: string;
   children: React.ReactNode;
   variant?: ButtonLinkVariant;
   color?: ButtonLinkColor;
   className?: string;
   disabled?: boolean;
-  onClick?: () => void; // Добавили поддержку onClick
+  onClick?: () => void;
 };
 
 // Базовый компонент ссылки
@@ -24,21 +24,35 @@ const ButtonLinkBase = ({
   disabled = false,
   onClick,
 }: ButtonLinkProps) => {
+  const baseClass = `button-link ${className} ${disabled ? 'disabled' : ''}`;
+
   // Если кнопка отключена
   if (disabled) {
+    if (onClick) {
+      return (
+        <button
+          className={baseClass}
+          onClick={onClick}
+          disabled
+          aria-disabled="true"
+          type="button"
+        >
+          {children}
+        </button>
+      );
+    }
+
     return (
-      <span className={`button-link ${className} disabled`}>{children}</span>
+      <a className={baseClass} aria-disabled="true" tabIndex={-1}>
+        {children}
+      </a>
     );
   }
 
   // Если передан onClick, возвращаем кнопку
   if (onClick) {
     return (
-      <button
-        className={`button-link ${className}`}
-        onClick={onClick}
-        type="button"
-      >
+      <button className={baseClass} onClick={onClick} type="button">
         {children}
       </button>
     );
@@ -46,7 +60,7 @@ const ButtonLinkBase = ({
 
   // Если передан href, возвращаем ссылку
   return (
-    <a href={href} className={`button-link ${className}`}>
+    <a href={href} className={baseClass}>
       {children}
     </a>
   );

@@ -1,0 +1,58 @@
+@use '../../../scss/variables' as vars;
+
+.tag {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: vars.$font-family-primary;
+  display: inline-block;
+  text-align: center;
+}
+
+// Модификатор для варианта "primary"
+.tag--primary {
+  background-color: vars.$link-blue-color;
+  color: vars.$background-color;
+}
+
+// Модификатор для варианта "outline"
+.tag--outline {
+  border: 1px solid vars.$link-blue-color;
+  background-color: transparent;
+  color: vars.$link-blue-color;
+}
+
+// Модификатор для варианта "views"
+.tag--views {
+  background-color: vars.$highlight-color;
+  color: vars.$text-color;
+}
+
+// Модификатор для варианта "diamond"
+.tag--diamond {
+  background-color: vars.$button-primary-color;
+  color: vars.$background-color;
+  font-weight: bold;
+}
+
+// Стили для сетки
+
+.tag-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.tag-grid__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tag-grid__item p {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #6c757d; // Серый цвет для подписи
+}

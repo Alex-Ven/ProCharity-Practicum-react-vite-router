@@ -1,64 +1,15 @@
 import React from 'react';
 import './Card.scss';
 
-// Базовый компонент Card
-const Card = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card">{children}</div>;
+type CardProps = {
+  children: React.ReactNode;
+  variant?: string; // Вариант карточки, например 'login', 'secondary'
+  className?: string; // Дополнительный класс, если нужен
 };
 
-// Пример реализации других типов карточек
-
-const CardVolunteer = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-volunteer">{children}</div>;
+const Card = ({ children, variant = '', className = '' }: CardProps) => {
+  const cardClass = `card ${variant ? `card-${variant}` : ''} ${className}`.trim();
+  return <div className={cardClass}>{children}</div>;
 };
 
-const CardCompanyVolunteer = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-company-volunteer">{children}</div>;
-};
-
-const CardCompany = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-company">{children}</div>;
-};
-
-const CardFund = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-fund">{children}</div>;
-};
-
-const CardFundStaff = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-fund-staff">{children}</div>;
-};
-
-const CardLogin = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-login">{children}</div>;
-};
-
-const CardCategoryLarge = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-category-large">{children}</div>;
-};
-
-const CardContentItem = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-content-item">{children}</div>;
-};
-
-const CardNews = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-news">{children}</div>;
-};
-
-const CardNumbers = ({ children }: { children: React.ReactNode }) => {
-  return <div className="card card-numbers">{children}</div>;
-};
-
-// Экспорт компонентов
-export {
-  Card,
-  CardVolunteer,
-  CardCompanyVolunteer,
-  CardCompany,
-  CardFund,
-  CardFundStaff,
-  CardLogin,
-  CardCategoryLarge,
-  CardContentItem,
-  CardNews,
-  CardNumbers,
-};
+export default Card;

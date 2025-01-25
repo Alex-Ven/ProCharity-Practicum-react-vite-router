@@ -1,9 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 import { ActionFunctionArgs, LoaderFunctionArgs } from 'react-router';
-import { fetchUser, logoutUser, User } from '../../api/userApi';
+import { fetchUser, loginUser, User } from '../../api/userApi';
 
 // Тип ответа Action
-interface ActionResponse {
+export interface ActionResponse {
     success?: boolean;
     error?: string;
 }
@@ -24,9 +24,19 @@ async function action({ request }: ActionFunctionArgs): Promise<ActionResponse> 
         const formData = await request.formData();
         const actionType = formData.get('action') as string | null;
 
-        if (actionType === 'logout') {
-            await logoutUser();
-            return { success: true };
+        if (actionType === 'login') {
+            // Получаем данные из формы
+            const email = formData.get('email') as string;
+            const password = formData.get('password') as string;
+
+            // Выполняем логин
+            const loginResult = await loginUser({ email, password });
+
+            if (loginResult.success) {
+                return { success: true };
+            } else {
+                return { error: loginResult.message || 'Не удалось войти' };
+            }
         }
 
         return { error: 'Неизвестное действие.' };
@@ -38,7 +48,7 @@ async function action({ request }: ActionFunctionArgs): Promise<ActionResponse> 
 
 // Лениво загружаем компонент HomePage
 const LazyHomePage = lazy(() =>
-    import('./HomePage.screen').then(module => ({
+    import('./HomePage').then(module => ({
         default: module.HomePage,
     }))
 );
@@ -52,7 +62,6 @@ const HomePageWrapper: React.FC = (props) => (
 
 // Экспортируем объект с маршрутом
 export default {
-    path: "/",
     loader,
     action,
     element: <HomePageWrapper />,
